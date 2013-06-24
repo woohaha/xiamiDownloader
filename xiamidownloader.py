@@ -3,6 +3,9 @@
 
 import re, urllib, urllib2
 
+debug = True  #調試開關
+
+
 class XiamiDownload(object):
 
     """虾米音乐下载"""
@@ -22,7 +25,8 @@ class XiamiDownload(object):
 
         """ 得到请求的 xml 地址 """
 
-        print u'xml地址是: http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group()
+        if (debug):
+            print u'xml地址是: http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group()
         return 'http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group()
 
     def __get_info(self):
@@ -77,13 +81,14 @@ if __name__ == '__main__':
 
     print u'下载地址是: %s' % url_download
 
-#    print u"下载开始..."
-#
-#    try:
-#        urllib.urlretrieve(url_download, r'new.mp3')
-#        urllib.urlretrieve(url_pic, r'new.jpg')
-#        urllib.urlretrieve(url_lyc, r'new.lyc')
-#    except:
-#        raise(u'请求错误，请重试')
-#
-#    print u"完成下载..."
+    if (not debug):
+        print u"下载开始..."
+
+        try:
+            urllib.urlretrieve(url_download, r'new.mp3')
+            urllib.urlretrieve(url_pic, r'new.jpg')
+            urllib.urlretrieve(url_lyc, r'new.lyc')
+        except:
+            raise(u'请求错误，请重试')
+
+        print u"完成下载..."
