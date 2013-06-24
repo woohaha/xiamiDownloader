@@ -26,8 +26,9 @@ class XiamiDownload(object):
         """ 得到请求的 xml 地址 """
 
         if (debug):
-            print u'xml地址是: http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group()
-        return 'http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group()
+            print u'xml地址是: http://www.xiami.com/song/playlist/id/%s/object_name/default/object_id/0' % re.search('\d+', self.url_song).group()
+        #return 'http://www.xiami.com/song/playlist/id/%s/type/1' % re.search('\d+', self.url_song).group() #這是專輯地址
+        return 'http://www.xiami.com/song/playlist/id/%s/object_name/default/object_id/0' % re.search('\d+', self.url_song).group()
 
     def __get_info(self):
 
